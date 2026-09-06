@@ -72,10 +72,59 @@ function App(){
   const go=(id)=>{setMenu(false); document.getElementById(id)?.scrollIntoView({behavior:'smooth'});};
 
   return <>
-    <AnimatePresence>{loading && <motion.div className="loader" initial={{opacity:1}} exit={{opacity:0}} transition={{duration:.35}}>
-      <div className="loader-bg"><span/><span/><span/></div>
-      <motion.h1 initial={{opacity:0,y:25}} animate={{opacity:1,y:0}} transition={{duration:.65,ease:'easeOut'}}>AMNA AHMED</motion.h1>
-    </motion.div>}</AnimatePresence>
+    <AnimatePresence>{loading && 
+      <motion.div className="loader" initial={{opacity:1}} exit={{opacity:0}} transition={{duration:.35}}>
+        <motion.h1
+          className="loader-name"
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{
+            opacity: [1, 1, 0],
+            scale: [1, 1, 8],
+          }}
+          transition={{
+            duration: 0.7,
+            delay: 0.65,
+            times: [0, 0.25, 1],
+            ease: [0.4, 0, 1, 1],
+          }}
+        >
+          <span className="name-left">
+            {["A", "M", "N", "A"].map((letter, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: (3 - index) * 0.12,
+                  duration: 0.2,
+                  ease: "easeOut",
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </span>
+
+          <span className="name-space"> </span>
+
+          <span className="name-right">
+            {["A", "H", "M", "E", "D"].map((letter, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: index * 0.12,
+                  duration: 0.2,
+                  ease: "easeOut",
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </span>
+        </motion.h1>
+      </motion.div>}</AnimatePresence>
 
     <motion.div className="scroll-progress" style={{scaleX:progress}} />
     <div className="cursor" id="cursor" />

@@ -95,6 +95,28 @@ a{
   color:var(--green);
 }
 
+.loader-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transform-origin: center;
+}
+
+.name-left,
+.name-right {
+  display: flex;
+}
+
+.name-left span,
+.name-right span {
+  display: inline-block;
+}
+
+.name-space {
+  width: 0.3em;
+}
+
 nav{
   display:flex;
   gap:34px;
@@ -990,29 +1012,6 @@ footer button{
   letter-spacing:-.06em;
 }
 
-.loader-bg{
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-}
-
-.loader-bg span{
-  position:absolute;
-  width:25vw;
-  height:25vw;
-  border:1px solid color-mix(in srgb,var(--green) 30%,transparent);
-  border-radius:50%;
-  animation:pulse 2s infinite;
-}
-
-.loader-bg span:nth-child(2){
-  animation-delay:.4s;
-}
-
-.loader-bg span:nth-child(3){
-  animation-delay:.8s;
-}
 
 @keyframes pulse{
   0%{
